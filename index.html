@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hệ Thống Xác Thực & Giải Phong Ấn Ultra HD</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #05050a;
+            --panel-bg: rgba(16, 16, 28, 0.75);
+            --primary: #00f3ff;
+            --secondary: #7000ff;
+            --accent: #ff0055;
+            --text-main: #ffffff;
+            --text-muted: #94a3b8;
+            --border: rgba(0, 243, 255, 0.2);
+            --glow: 0 0 20px rgba(0, 243, 255, 0.4);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(112, 0, 255, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(0, 243, 255, 0.15) 0%, transparent 40%);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 440px;
+            background: var(--panel-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), var(--glow);
+            position: relative;
+            animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px) scale(0.98); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .logo-area {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .logo-area h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+        }
+
+        .logo-area p {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 5px;
+            letter-spacing: 1px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 14px 16px;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            color: var(--text-main);
+            font-size: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 12px rgba(0, 243, 255, 0.3);
+            background: rgba(0, 0, 0, 0.6);
+        }
+
+        .btn {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 10px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), #0072ff);
+            color: #05050a;
+            box-shadow: 0 4px 15px rgba(0, 243, 255, 0.4);
+        }
+
+        .btn-primary:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 243, 255, 0.6);
+        }
+
+        .btn-danger {
+            background: linear-gradient(135deg, var(--accent), #ff00aa);
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(255, 0, 85, 0.4);
+        }
+
+        .btn-danger:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 0, 85, 0.6);
+        }
+
+        .switch-text {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .switch-text a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .switch-text a:hover {
+            text-decoration: underline;
+        }
+
+        /* Dashboard & History Styles */
+        .dashboard-info {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 16px;
+            margin-bottom: 20px;
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 14px;
+        }
+
+        .info-row:last-child {
+            border-bottom: none;
+        }
+
+        .info-label {
+            color: var(--text-muted);
+        }
+
+        .info-value {
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .history-box {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 12px;
+            max-height: 120px;
+            overflow-y: auto;
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        .history-item {
+            padding: 4px 0;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.05);
+        }
+
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- 1. GIAO DIỆN ĐĂNG NHẬP -->
+        <div id="login-screen" class="screen">
+            <div class="logo-area">
+                <h1>Đăng Nhập</h1>
+                <p>Hệ Thống Bảo Mật Ultra HD 5.0</p>
+            </div>
+            <div class="form-group">
+                <label>Tài khoản</label>
+                <input type="text" id="login-user" class="form-control" placeholder="Nhập tên tài khoản...">
+            </div>
+            <div class="form-group">
+                <label>Mật khẩu</label>
+                <input type="password" id="login-pass" class="form-control" placeholder="Nhập mật khẩu...">
+            </div>
+            <button class="btn btn-primary" onclick="handleLogin()">Xác Thực Đăng Nhập</button>
+            
+            <div class="switch-text">
+                <p>Chưa có tài khoản? <a onclick="switchScreen('register-screen')">Đăng ký ngay</a></p>
+                <p style="margin-top: 8px;"><a onclick="switchScreen('forgot-screen')">Quên mật khẩu?</a></p>
+            </div>
+        </div>
+
+        <!-- 2. GIAO DIỆN ĐĂNG KÝ -->
+        <div id="register-screen" class="screen hidden">
+            <div class="logo-area">
+                <h1>Đăng Ký</h1>
+                <p>Khởi Tạo Hồ Sơ Mới</p>
+            </div>
+            <div class="form-group">
+                <label>Tài khoản</label>
+                <input type="text" id="reg-user" class="form-control" placeholder="Tên tài khoản...">
+            </div>
+            <div class="form-group">
+                <label>Mật khẩu</label>
+                <input type="password" id="reg-pass" class="form-control" placeholder="Mật khẩu bảo mật...">
+            </div>
+            <div class="form-group">
+                <label>Họ và Tên</label>
+                <input type="text" id="reg-fullname" class="form-control" placeholder="Nguyễn Văn A...">
+            </div>
+            <div class="form-group">
+                <label>Ấp</label>
+                <input type="text" id="reg-hamlet" class="form-control" placeholder="Tên ấp...">
+            </div>
+            <div class="form-group">
+                <label>Xã</label>
+                <input type="text" id="reg-commune" class="form-control" placeholder="Tên xã...">
+            </div>
+            <div class="form-group">
+                <label>Tỉnh</label>
+                <input type="text" id="reg-province" class="form-control" placeholder="Tên tỉnh...">
+            </div>
+            <button class="btn btn-primary" onclick="handleRegister()">Hoàn Tất Đăng Ký</button>
+            
+            <div class="switch-text">
+                <p>Đã có tài khoản? <a onclick="switchScreen('login-screen')">Đăng nhập</a></p>
+            </div>
+        </div>
+
+        <!-- 3. GIAO DIỆN QUÊN MẬT KHẨU -->
+        <div id="forgot-screen" class="screen hidden">
+            <div class="logo-area">
+                <h1>Khôi Phục</h1>
+                <p>Lấy Lại Mật Khẩu Hệ Thống</p>
+            </div>
+            <div class="form-group">
+                <label>Tài khoản cần khôi phục</label>
+                <input type="text" id="forgot-user" class="form-control" placeholder="Nhập tài khoản của bạn...">
+            </div>
+            <button class="btn btn-primary" onclick="handleForgot()">Gửi Yêu Cầu</button>
+            
+            <div class="switch-text">
+                <p><a onclick="switchScreen('login-screen')">Quay lại đăng nhập</a></p>
+            </div>
+        </div>
+
+        <!-- 4. GIAO DIỆN TRONG TÀI KHOẢN & GIẢI PHONG ẤN -->
+        <div id="dashboard-screen" class="screen hidden">
+            <div class="logo-area">
+                <h1>Trang Chủ Hệ Thống</h1>
+                <p>Trạng Thái Định Danh Hoạt Động</p>
+            </div>
+
+            <div class="dashboard-info">
+                <div class="info-row">
+                    <span class="info-label">Họ và Tên:</span>
+                    <span class="info-value" id="info-fullname">---</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Địa chỉ:</span>
+                    <span class="info-value" id="info-address">---</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Tài khoản:</span>
+                    <span class="info-value" id="info-username">---</span>
+                </div>
+            </div>
+
+            <label style="font-size: 13px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; margin-bottom: 8px; display: block;">Nhật Ký Lịch Sử</label>
+            <div class="history-box" id="history-log">
+                <div class="history-item">[Hệ thống]: Khởi tạo phiên kết nối thành công.</div>
+            </div>
+
+            <!-- Nút giải phong ấn trở về trạng thái ban đầu -->
+            <button class="btn btn-danger" onclick="unsealSystem()">⚡ Giải Phong Ấn / Trở Về Ban Đầu</button>
+            
+            <div class="switch-text" style="margin-top: 15px;">
+                <p><a onclick="switchScreen('login-screen')">Đăng xuất phiên</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Lưu trữ dữ liệu tạm thời (Local Database Simulation)
+        let currentUserData = {
+            username: "",
+            password: "",
+            fullname: "Nguyễn Văn A",
+            hamlet: "Ấp 1",
+            commune: "Xã Tân Bình",
+            province: "Vĩnh Long"
+        };
+
+        let historyLogs = [
+            "Khởi tạo cấu trúc giao diện 5.0 HD Ultra."
+        ];
+
+        function switchScreen(screenId) {
+            document.querySelectorAll('.screen').forEach(el => el.classList.add('hidden'));
+            document.getElementById(screenId).classList.remove('hidden');
+        }
+
+        function handleRegister() {
+            const user = document.getElementById('reg-user').value;
+            const pass = document.getElementById('reg-pass').value;
+            const fullname = document.getElementById('reg-fullname').value;
+            const hamlet = document.getElementById('reg-hamlet').value;
+            const commune = document.getElementById('reg-commune').value;
+            const province = document.getElementById('reg-province').value;
+
+            if(!user || !pass || !fullname) {
+                alert("Vui lòng điền đầy đủ các thông tin quan trọng!");
+                return;
+            }
+
+            currentUserData = { username: user, password: pass, fullname, hamlet, commune, province };
+            addLog(`Đăng ký thành công tài khoản: ${user}`);
+            alert("Đăng ký thành công! Hãy đăng nhập lại.");
+            switchScreen('login-screen');
+        }
+
+        function handleLogin() {
+            const user = document.getElementById('login-user').value;
+            const pass = document.getElementById('login-pass').value;
+
+            if(user === currentUserData.username && pass === currentUserData.password || (user !== "" && pass !== "")) {
+                // Nếu chưa đăng ký, dùng dữ liệu mẫu hoặc thông tin vừa nhập
+                if(currentUserData.username === "") {
+                    currentUserData.username = user;
+                }
+                
+                document.getElementById('info-fullname').innerText = currentUserData.fullname;
+                document.getElementById('info-address').innerText = `${currentUserData.hamlet}, ${currentUserData.commune}, ${currentUserData.province}`;
+                document.getElementById('info-username').innerText = currentUserData.username;
+
+                addLog(`Tài khoản [${currentUserData.username}] đã đăng nhập vào hệ thống.`);
+                updateHistoryUI();
+                switchScreen('dashboard-screen');
+            } else {
+                alert("Sai thông tin tài khoản hoặc mật khẩu!");
+            }
+        }
+
+        function handleForgot() {
+            const user = document.getElementById('forgot-user').value;
+            if(!user) {
+                alert("Vui lòng nhập tài khoản cần khôi phục!");
+                return;
+            }
+            alert(`Mật khẩu tạm thời đã được gửi hoặc khôi phục cho tài khoản: ${user}`);
+            addLog(`Yêu cầu khôi phục mật khẩu cho tài khoản: ${user}`);
+            switchScreen('login-screen');
+        }
+
+        function addLog(text) {
+            const timeStr = new Date().toLocaleTimeString();
+            historyLogs.unshift(`[${timeStr}] ${text}`);
+        }
+
+        function updateHistoryUI() {
+            const historyBox = document.getElementById('history-log');
+            historyBox.innerHTML = historyLogs.map(log => `<div class="history-item">${log}</div>`).join('');
+        }
+
+        function unsealSystem() {
+            if(confirm("Bạn có chắc chắn muốn giải phong ấn, xóa trạng thái hiện tại và trở về trạng thái ban đầu không?")) {
+                // Đưa về trạng thái ban đầu gốc
+                currentUserData = {
+                    username: "",
+                    password: "",
+                    fullname: "Nguyễn Văn A",
+                    hamlet: "Ấp 1",
+                    commune: "Xã Tân Bình",
+                    province: "Vĩnh Long"
+                };
+                
+                addLog("Hệ thống đã được GIẢI PHONG ẤN - Trở về trạng thái ban đầu sạch sẽ.");
+                alert("Đã giải phong ấn thành công! Hệ thống quay về trạng thái ban đầu.");
+                
+                // Reset input fields
+                document.getElementById('login-user').value = '';
+                document.getElementById('login-pass').value = '';
+                
+                switchScreen('login-screen');
+            }
+        }
+    </script>
+</body>
+</html>

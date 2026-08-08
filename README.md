@@ -1,38 +1,36 @@
-# ⚡ Hệ Thống Xác Thực & Giải Phong Ấn Ultra HD 5.0
+# ☸️ TÙNG PHẠT CHÚNG SINH 5.0
 
-<div align="center">
-
-![GitHub status](https://img.shields.io/badge/Status-Active-success?style=for-the-badge&logo=none)
-![Tech stack](https://img.shields.io/badge/Tech-HTML5%20%7C%20CSS3%20%7C%20JS-blue?style=for-the-badge&logo=html5)
-![Environment](https://img.shields.io/badge/Optimized%20for-Acode%20%7C%20TrebEdit-purple?style=for-the-badge)
-
-*Giao diện bảo mật không gian mạng cao cấp tích hợp cơ chế định danh địa lý và giải phong ấn trạng thái ban đầu.*
-
-</div>
+> Hệ thống Giám sát & Trừ Phước Nghiệp - Phiên bản 5.0 (Tích hợp 20 Tội Danh & Cơ chế Lũy Tiến)
+> *Nam Mô A Di Đà Phật - Nghiệp Báo Phân Minh*
 
 ---
 
-## 🚀 Giới Thiệu Dự Án
+## 🌟 Giới thiệu Dự án
 
-Đây là bộ mã nguồn giao diện web di động (Mobile-first web interface) được thiết kế đặc biệt để chạy mượt mà trực tiếp trên các trình soạn thảo mã nguồn di động như **Acode** hoặc **TrebEdit** trên Android. 
+**Tùng Phạt Chúng Sinh 5.0** là một ứng dụng web mô phỏng mang phong cách Huyền bí Phật giáo kết hợp Cyberpunk. Ứng dụng cho phép ghi nhận tên các chúng sinh vi phạm, chọn lọc qua **20 tội danh nghiệp báo** (từ khẩu nghiệp, bạo lực gia đình cho đến đại ác nghiệp) và tự động trừ phước đức chung của hệ thống theo cấp số nhân dựa trên số lần tái phạm.
 
-Giao diện mang phong cách **Ultra HD 5.0** với hiệu ứng kính mờ (*Glassmorphism*), ánh sáng neon không gian tối, mang lại trải nghiệm tương lai và mượt mà.
-
----
-
-## ✨ Tính Năng Nổi Bật
-
-* **🔐 Hệ Thống Xác Thực Đầy Đủ**: Bao gồm màn hình **Đăng nhập**, **Đăng ký** tài khoản mới và **Quên mật khẩu**.
-* **📍 Quản Lý Định Danh Chi Tiết**: Lưu trữ và hiển thị chính xác các thông tin cá nhân bao gồm: **Họ và tên**, **Ấp**, **Xã**, và **Tỉnh**.
-* **⚡ Giải Phong Ấn Trở Về Ban Đầu**: Tính năng đặc biệt cho phép xóa sạch trạng thái phiên làm việc hiện tại, đưa hệ thống và dữ liệu về lại trạng thái ban đầu một cách an toàn mà không làm thay đổi cấu trúc cốt lõi ("Không thay hồn đổi xác").
-* **📜 Nhật Ký Lịch Sử (History Logs)**: Theo dõi và hiển thị toàn bộ lịch sử hoạt động, thời gian đăng nhập và các sự kiện của hệ thống theo thời gian thực.
+Dự án được tối ưu hóa đặc biệt để chạy mượt mà trực tiếp trên các trình duyệt di động Android thông qua các môi trường lập trình như **Acode** hoặc **TrebuEdit**.
 
 ---
 
-## 📂 Cấu Trúc Mã Nguồn
+## 🚀 Tính năng Nổi bật (Phiên bản 5.0)
 
-Dự án được tối ưu hóa gói gọn trong một tệp duy nhất để dễ dàng triển khai và kiểm thử ngay trên điện thoại:
+*   **Giao diện 5.0 Đỉnh cao:** Tông màu chủ đạo vàng kim hoàng đạo và đỏ huyết nghiệp báo, tối ưu hoàn toàn cho màn hình cảm ứng di động (Responsive).
+*   **20 Tội Danh Nghiệp Báo Đa Dạng:** Phân chia rõ ràng thành các nhóm:
+    *   *Khẩu Nghiệp & Thân Nghiệp:* Chửi rủa, nói dối, nói ly gián, thô ác, ba hoa...
+    *   *Gia Đạo & Đạo Đức:* Bạo lực gia đình, bất hiếu cha mẹ, bỏ bê con cái, ngoại tình...
+    *   *Xã Hội & Tiền Tài:* Trộm cắp, cờ bạc, buôn bán hàng giả, xù nợ, đố kỵ...
+    *   *Tội Nặng & Đại Ác:* Sát sinh, phỉ báng Tam Bảo, buôn chất cấm, bất kính tôn sư...
+*   **Cơ chế Lũy Tiến Thông Minh:** Khi một chúng sinh tái phạm cùng một tội nhiều lần, hệ thống sẽ tự động nhân mức phạt phước đức lên tương ứng với số lần vi phạm.
+*   **Sổ Nam Tào Trực Tuyến:** Bảng lịch sử ghi nhận chi tiết thời gian, tên chúng sinh, tội danh và số phước đức bị Phật A Di Đà trừ bỏ theo thời gian thực.
+
+---
+
+## 📂 Cấu trúc Dự án
+
+Dự án được thiết kế dưới dạng **Single File HTML** (Tất cả mã nguồn HTML, CSS, JavaScript nằm gọn trong một file duy nhất) để dễ dàng thao tác trực tiếp trên điện thoại:
 
 ```text
-📦 
- ┗ 📜 index.html   # Chứa toàn bộ cấu trúc HTML, CSS (Glassmorphism) và Logic JavaScript
+tunguhat-chungsinh/
+│
+└── index.html       # File mã nguồn chính chứa toàn bộ giao diện và logic

@@ -1,19 +1,15 @@
-name: Deploy Ultra HD Web to GitHub Pages
+name: Deploy Tùng Phạt Chúng Sinh
 
 on:
   push:
-    branches: [ "main" ]
-
-  # Cho phép kích hoạt thủ công từ tab Actions trên GitHub
+    branches: [ "main", "master" ]
   workflow_dispatch:
 
-# Quyền hạn cho phép GitHub Actions đọc và ghi (cần thiết để deploy lên GitHub Pages)
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# Chỉ định một tiến trình deploy đồng thời để tránh xung đột
 concurrency:
   group: "pages"
   cancel-in-progress: true
@@ -34,7 +30,6 @@ jobs:
       - name: Upload Artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Thư mục chứa mã nguồn gốc của bạn (nếu index.html nằm ở thư mục gốc)
           path: '.'
 
       - name: Deploy to GitHub Pages

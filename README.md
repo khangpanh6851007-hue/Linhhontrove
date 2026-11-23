@@ -1,36 +1,56 @@
-# ☸️ TÙNG PHẠT CHÚNG SINH 5.0
+# Tùng Phạt Chúng Sinh 9.0
 
-> Hệ thống Giám sát & Trừ Phước Nghiệp - Phiên bản 5.0 (Tích hợp 20 Tội Danh & Cơ chế Lũy Tiến)
-> *Nam Mô A Di Đà Phật - Nghiệp Báo Phân Minh*
+Ứng dụng web HTML/CSS/JavaScript thuần, giao diện tiếng Việt. Bản hiện tại chạy trực tiếp trên trình duyệt và lưu dữ liệu demo bằng `localStorage`.
 
----
+## Tính năng
 
-## 🌟 Giới thiệu Dự án
+- Tổng quan điểm phước đức, cấp tu luyện và tiến độ.
+- Hệ thống 10.000 cấp tu luyện.
+- 1.000 danh hiệu và 1.000 thần khí.
+- Ghi sổ thiên phạt, hoàn tác và nhật ký.
+- Bang hội, chiến tranh mô phỏng, chợ demo, thành viên, bảng xếp hạng và chat cục bộ.
+- Sao lưu/khôi phục dữ liệu JSON.
+- Khu vực quản trị demo: đăng nhập bằng PIN và thay đổi PIN có xác nhận.
 
-**Tùng Phạt Chúng Sinh 5.0** là một ứng dụng web mô phỏng mang phong cách Huyền bí Phật giáo kết hợp Cyberpunk. Ứng dụng cho phép ghi nhận tên các chúng sinh vi phạm, chọn lọc qua **20 tội danh nghiệp báo** (từ khẩu nghiệp, bạo lực gia đình cho đến đại ác nghiệp) và tự động trừ phước đức chung của hệ thống theo cấp số nhân dựa trên số lần tái phạm.
+## Chạy trên máy
 
-Dự án được tối ưu hóa đặc biệt để chạy mượt mà trực tiếp trên các trình duyệt di động Android thông qua các môi trường lập trình như **Acode** hoặc **TrebuEdit**.
+1. Đặt `index.html` ở thư mục gốc của repository.
+2. Mở `index.html` bằng trình duyệt hiện đại.
 
----
+Không cần cài Node.js hoặc chạy lệnh build.
 
-## 🚀 Tính năng Nổi bật (Phiên bản 5.0)
+## Đưa website lên GitHub Pages
 
-*   **Giao diện 5.0 Đỉnh cao:** Tông màu chủ đạo vàng kim hoàng đạo và đỏ huyết nghiệp báo, tối ưu hoàn toàn cho màn hình cảm ứng di động (Responsive).
-*   **20 Tội Danh Nghiệp Báo Đa Dạng:** Phân chia rõ ràng thành các nhóm:
-    *   *Khẩu Nghiệp & Thân Nghiệp:* Chửi rủa, nói dối, nói ly gián, thô ác, ba hoa...
-    *   *Gia Đạo & Đạo Đức:* Bạo lực gia đình, bất hiếu cha mẹ, bỏ bê con cái, ngoại tình...
-    *   *Xã Hội & Tiền Tài:* Trộm cắp, cờ bạc, buôn bán hàng giả, xù nợ, đố kỵ...
-    *   *Tội Nặng & Đại Ác:* Sát sinh, phỉ báng Tam Bảo, buôn chất cấm, bất kính tôn sư...
-*   **Cơ chế Lũy Tiến Thông Minh:** Khi một chúng sinh tái phạm cùng một tội nhiều lần, hệ thống sẽ tự động nhân mức phạt phước đức lên tương ứng với số lần vi phạm.
-*   **Sổ Nam Tào Trực Tuyến:** Bảng lịch sử ghi nhận chi tiết thời gian, tên chúng sinh, tội danh và số phước đức bị Phật A Di Đà trừ bỏ theo thời gian thực.
+1. Tạo repository trên GitHub.
+2. Đặt file HTML phiên bản mới đã sửa PIN thành `index.html` ở thư mục gốc repository.
+   - Nếu đang dùng file `index_fixed_pin.html`, hãy đổi tên file đó thành `index.html`.
+3. Thêm workflow tại `.github/workflows/deploy.yml` (file này đã có trong gói).
+4. Push các thay đổi lên nhánh `main`.
+5. Vào **Settings → Pages** và chọn **GitHub Actions** làm Build and deployment source.
+6. Mở tab **Actions** để theo dõi workflow `Deploy static site to GitHub Pages`.
+7. Khi workflow thành công, địa chỉ website sẽ hiển thị trong phần **Settings → Pages**.
 
----
+Các lần push tiếp theo lên `main` sẽ tự động triển khai lại website. Có thể chạy thủ công bằng **Actions → Deploy static site to GitHub Pages → Run workflow**.
 
-## 📂 Cấu trúc Dự án
-
-Dự án được thiết kế dưới dạng **Single File HTML** (Tất cả mã nguồn HTML, CSS, JavaScript nằm gọn trong một file duy nhất) để dễ dàng thao tác trực tiếp trên điện thoại:
+## Cấu trúc
 
 ```text
-tunguhat-chungsinh/
-│
-└── index.html       # File mã nguồn chính chứa toàn bộ giao diện và logic
+.
+├── index.html
+├── README.md
+└── .github/
+    └── workflows/
+        └── deploy.yml
+```
+
+## Lưu ý quan trọng về dữ liệu và bảo mật
+
+- Đây là ứng dụng frontend demo. Dữ liệu `localStorage` chỉ nằm trên trình duyệt/thiết bị hiện tại; không tự đồng bộ giữa người dùng hoặc thiết bị.
+- Chat, bảng xếp hạng, bang hội, chợ và chiến tranh hiện là mô phỏng cục bộ, chưa phải dịch vụ liên server.
+- PIN quản trị hiện được lưu ở phía trình duyệt. Không dùng cơ chế này để bảo vệ dữ liệu hoặc chức năng nhạy cảm trên website công khai.
+- Không đưa mật khẩu, khóa API, thông tin cá nhân nhạy cảm hoặc bí mật vào mã nguồn công khai.
+- Muốn có tài khoản thật, phân quyền an toàn, đồng bộ dữ liệu và tính năng realtime, cần bổ sung backend cùng cơ chế xác thực phía máy chủ.
+
+## Giấy phép
+
+Chưa chỉ định giấy phép. Nếu muốn cho phép người khác sử dụng hoặc chỉnh sửa mã nguồn, hãy thêm tệp `LICENSE` phù hợp.
